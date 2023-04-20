@@ -31,7 +31,7 @@ resource "aws_instance" "k8s-server" {
  type = "ssh"
  host = self.public_ip
  user = "ubuntu"
- private_key = file("./jenkinskey.pem")
+ private_key = file("./ProjectKey.pem")
  }
  }
 }
