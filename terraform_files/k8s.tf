@@ -33,5 +33,18 @@ resource "aws_instance" "k8s-server" {
  user = "ubuntu"
  private_key = file("./ProjectKey.pem")
  }
+  
+  # Define Elastic Ip resource
+  resource "aws_eip" "eip" {
+     vpc = true
+  }
+  
+  # Associate Elastic IP with EC2 instance
+  resource "aws_eip_associateion" "eip_assoc" {
+     instance_id = aws_instance.k8s-server.id
+     allocation_id = aws_eip.eip.id
+   
+     depends_on = [aws_instance.k8s-server]
+  }
  }
 }
