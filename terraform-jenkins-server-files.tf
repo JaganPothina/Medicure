@@ -4,7 +4,7 @@ provider aws {
 resource "aws_instance" "jenkins-server" {
   ami           = "ami-007855ac798b5175e" 
   instance_type = "t2.medium"
-  key_name = "jenkinskey"
+  key_name = "Projectkey"
   vpc_security_group_ids= ["sg-0c7aae9017fc5106b"]
 
    tags = {
